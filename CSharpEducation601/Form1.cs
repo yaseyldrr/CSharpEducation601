@@ -34,5 +34,42 @@ namespace CSharpEducation601
             customerOperations.AddCustomer(customer);
             MessageBox.Show("Customer successfully added","Warning",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
+
+        private void btList_Click(object sender, EventArgs e)
+        {
+            List<Customer> customers = customerOperations.GetAllCustomer();
+            dataGridView1.DataSource = customers;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string customerId = txtCustomerId.Text;
+            customerOperations.DeleteCustomer(customerId);
+            MessageBox.Show("Customer successfully deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string customerId = txtCustomerId.Text;
+            var customer = new Customer()
+            {
+                CustomerName = txtCustomerName.Text,
+                CustomerSurname = txtCustomerSurname.Text,
+                CustomerCity = txtCustomerCity.Text,
+                CustomerBalance = decimal.Parse(txtCustomerBalance.Text),
+                CustomerPurchase = int.Parse(txtCustomerPurchase.Text),
+                CustomerId = customerId
+            };
+            customerOperations.UpdateCustomer(customer);
+            MessageBox.Show("Customer successfully updated", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnGetById_Click(object sender, EventArgs e)
+        {
+            string id = txtCustomerId.Text;
+            Customer customers = customerOperations.GetCustomerById(id);
+            dataGridView1.DataSource = new List<Customer> { customers };
+        }
     }
 }

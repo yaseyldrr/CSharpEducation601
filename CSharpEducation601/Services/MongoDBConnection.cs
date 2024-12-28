@@ -19,7 +19,7 @@ namespace CSharpEducation601.Services
             _database = client.GetDatabase("Db601Customer"); // oluşturulacak veritabanı adı
 
         }
-        public IMongoCollection<BsonDocument> GetCustomerCollection()
+        public IMongoCollection<BsonDocument> GetCustomersCollection()
         {
             return _database.GetCollection<BsonDocument>("Customers"); // customers adında bir collection oluşturulacak
 

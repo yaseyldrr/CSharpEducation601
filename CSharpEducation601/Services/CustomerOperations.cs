@@ -100,14 +100,5 @@ namespace CSharpEducation601.Services
                 CustomerId = id
             };
         }
-
-
-
-
-
-
-
-
-
     }
         }
